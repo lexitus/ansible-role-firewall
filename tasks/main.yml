@@ -33,6 +33,8 @@
     group: root
     mode: 0644
   when: "ansible_service_mgr == 'systemd'"
+  notify:
+    - daemon-reload
 
 - name: Configure the firewall service.
   service:
@@ -42,3 +44,4 @@
 
 - import_tasks: disable-other-firewalls.yml
   when: firewall_disable_firewalld or firewall_disable_ufw
+  
