@@ -6,7 +6,6 @@ After=syslog.target network.target
 Type=oneshot
 ExecStart=/etc/firewall.bash
 ExecStop=/sbin/iptables -F INPUT
-ExecStop=/sbin/iptables -F FORWARD
 ExecStop=/sbin/iptables -F OUTPUT
 ExecStop=/sbin/iptables -F DOCKER-USER
 RemainAfterExit=yes
