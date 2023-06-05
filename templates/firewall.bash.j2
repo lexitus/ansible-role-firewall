@@ -108,7 +108,7 @@ ip6tables -P OUTPUT DROP
 #{% endif %}
 
   # Accept traffic from loopback interface (localhost).
-#  ip6tables -A INPUT -i lo -j ACCEPT
+ip6tables -A INPUT -i lo -j ACCEPT
 
   # Open ports.
 #{# Add a rule for each open port #}
