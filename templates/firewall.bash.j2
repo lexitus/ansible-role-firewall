@@ -97,9 +97,9 @@ ip6tables -F
 ip6tables -X
 
 # Set the default rules.
-ip6tables -P INPUT DROP
+ip6tables -P INPUT ACCEPT
 ip6tables -P FORWARD DROP
-ip6tables -P OUTPUT DROP
+ip6tables -P OUTPUT ACCEPT
 
 #{% if firewall_flush_rules_and_chains %}
 #  # Remove all rules and chains.
@@ -107,8 +107,11 @@ ip6tables -P OUTPUT DROP
 #  ip6tables -X
 #{% endif %}
 
-  # Accept traffic from loopback interface (localhost).
+# Accept traffic from loopback interface (localhost).
 ip6tables -A INPUT -i lo -j ACCEPT
+
+# Drop all other
+ip6tables -A INPUT -j DROP
 
   # Open ports.
 #{# Add a rule for each open port #}
